@@ -17,8 +17,19 @@
       margin: 0;
       padding: 0;
     }
+    a {
+      text-decoration: none;
+      color: #333;
+    }
     .nav {
+      display: flex;
+      flex-flow: column;
       background: #eee;
+      font-family: sans-serif;
+      align-items: center;
+    }
+    .nav a {
+      flex: 1;
     }
     .main {
       flex: 1;
@@ -28,7 +39,11 @@
 </head>
 <body>
 
-  <div class="nav">nav</div>
+  <div class="nav">
+    <a href="https://mctextbin.github.io">mctextbin</a>
+    <a href="https://github.com/mctextbin/mctextbin.github.io">view source on github</a>
+    <a href="https://jonthesquirrel.github.io">made by Jonathan Herman</a>
+  </div>
   <div class="main">
     <div class="input">
       <div class="input-nav">input-nav</div>
