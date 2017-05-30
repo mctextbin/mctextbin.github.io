@@ -1,6 +1,8 @@
 function App() {
   function fcodesToJson(text_fcodes) {
-    let text_json = text_fcodes
+    let text_json = {
+      text: text_fcodes
+    }
     return text_json
   }
 
