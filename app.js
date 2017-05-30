@@ -21,6 +21,8 @@ function App() {
     let text_json = fcodesToJson(text_fcodes)
     render(text_json)
   }
+  
   document.querySelector('#input').addEventListener('input', update)
+  update()
 }
 window.addEventListener('load', App)
