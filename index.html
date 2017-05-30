@@ -10,8 +10,8 @@
 
     body {
       display: flex;
-      /*flex-flow: row;*/
-      position: relative;
+      flex-flow: row;
+      position: absolute;
       width: 100%;
       height: 100%;
       margin: 0;
@@ -22,24 +22,11 @@
       color: #333;
     }
     .nav {
-      /*display: flex;*/
-      /*flex-flow: column;*/
+      display: flex;
+      flex-flow: column;
       background: #eee;
       font-family: sans-serif;
-      /*align-items: center;*/
-      height: 100%;
-    }
-    .nav-content {
-      transform: rotate(-90deg);
-      transform-origin: 0 100%;
-      position: absolute;
-      line-height: 25px;
-      font-size: 14px;
-      z-index: 10;
-      height: 25px;
-      width: 100%;
-      left: 25px;
-      bottom: 0;
+      align-items: center;
     }
     .nav a {
       flex: 1;
@@ -53,11 +40,9 @@
 <body>
 
   <div class="nav">
-    <div class="nav-content">
-      <a href="https://mctextbin.github.io">mctextbin</a>
-      <a href="https://github.com/mctextbin/mctextbin.github.io">view source on github</a>
-      <a href="https://jonthesquirrel.github.io">made by Jonathan Herman</a>
-    </div>
+    <a href="https://mctextbin.github.io">mctextbin</a>
+    <a href="https://github.com/mctextbin/mctextbin.github.io">view source on github</a>
+    <a href="https://jonthesquirrel.github.io">made by Jonathan Herman</a>
   </div>
   <div class="main">
     <div class="input">
