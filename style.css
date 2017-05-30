@@ -1,0 +1,49 @@
+body {
+  display: flex;
+  flex-flow: row;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+.nav {
+  display: flex;
+  flex-flow: column;
+  font-family: sans-serif;
+  align-items: center;
+  background: #eee;
+}
+.nav a {
+  flex: 1;
+}
+.main {
+  flex: 1;
+  display: flex;
+  flex-flow: row;
+}
+.input-container, .output-container {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+}
+.input-container {
+  background: #fff;
+}
+.output-container {
+  background: #eee;
+}
+.input-main, .output-main {
+  flex: 1;
+  font-family: monospace;
+  font-size: 1.2rem;
+}
+.input-main {
+  border: none;
+  overflow: auto;
+  outline: none;
+}
