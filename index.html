@@ -36,19 +36,26 @@
       display: flex;
       flex-flow: row;
     }
-    .input, .output {
+    .input-container, .output-container {
       flex: 1;
       display: flex;
       flex-flow: column;
     }
-    .input {
+    .input-container {
       background: #fff;
     }
-    .output {
+    .output-container {
       background: #eee;
     }
     .input-main, .output-main {
       flex: 1;
+      font-family: monospace;
+      font-size: 1.2rem;
+    }
+    .input-main {
+      border: none;
+      overflow: auto;
+      outline: none;
     }
 
   </style>
@@ -61,13 +68,13 @@
     <a href="https://jonthesquirrel.github.io">made by Jonathan Herman</a>
   </div>
   <div class="main">
-    <div class="input">
+    <div class="input-container">
       <div class="input-nav">input-nav</div>
-      <div class="input-main">input-main</div>
+      <textarea class="input-main" id="input" autofocus placeholder="type text with formatting codes here"></textarea>
     </div>
-    <div class="output">
+    <div class="output-container">
       <div class="output-nav">output-nav</div>
-      <div class="output-main">output-main</div>
+      <div class="output-main" id="output">output-main</div>
     </div>
   </div>
 
