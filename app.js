@@ -1,9 +1,10 @@
 function App() {
   function fcodesToJson(text_fcodes) {
-    let text_json = {
-      text: text_fcodes
-    }
-    return text_json
+    text_fcodes = "&f" + text_fcodes
+    let text_json = {}
+    let text_split = text_fcodes.match(/([&§][0-9a-fk-or](?:(?![&§][0-9a-fk-or])[\s\S])*)/gi)
+    return text_split
+    // return text_json
   }
 
   function jsonToFcodes(text_json) {
@@ -21,7 +22,7 @@ function App() {
     let text_json = fcodesToJson(text_fcodes)
     render(text_json)
   }
-  
+
   document.querySelector('#input').addEventListener('input', update)
   update()
 }
