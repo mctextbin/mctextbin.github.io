@@ -63,7 +63,7 @@
   text-shadow: 1px 1px 0 #3F3F3F;
 }
 .formatting-obfuscated {
-  background: black;
+  transform: rotate(10deg);
 }
 .formatting-bold {
   font-weight: bold;
