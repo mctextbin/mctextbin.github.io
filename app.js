@@ -23,6 +23,17 @@ function App() {
     "o": "italic"
   }
 
+  function storage_save() {
+    localStorage.text = document.querySelector('#input').value
+  }
+
+  function storage_load() {
+    if (localStorage.text === undefined) {
+      localStorage.text = ''
+    }
+    document.querySelector('#input').value = localStorage.text
+  }
+
   function fcodesToJson(text_fcodes) {
     text_fcodes = '&f' + text_fcodes
     text_fcodes = text_fcodes.replace(/[&§]r/gi, '&f')
@@ -63,12 +74,14 @@ function App() {
   }
 
   function update() {
+    storage_save()
     let text_fcodes = document.querySelector('#input').value
     let text_json = fcodesToJson(text_fcodes)
     render(text_json)
   }
 
   document.querySelector('#input').addEventListener('input', update)
+  storage_load()
   update()
 }
 window.addEventListener('load', App)
