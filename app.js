@@ -23,6 +23,8 @@ function App() {
     "o": "italic"
   }
 
+  let text_json = []
+
   function storage_save() {
     localStorage.text = document.querySelector('#input').value
   }
@@ -37,7 +39,6 @@ function App() {
   function fcodesToJson(text_fcodes) {
     text_fcodes = `&f${text_fcodes}`
     text_fcodes = text_fcodes.replace(/[&§]r/gi, '&f')
-    text_fcodes = text_fcodes.replace(/\n/gi, '\\n')
     let text_split = text_fcodes.match(/([&§][0-9a-fk-o](?:(?![&§][0-9a-fk-o])[\s\S])*)/gi)
     let text_json = []
     text_split.forEach(x => {
@@ -72,7 +73,7 @@ function App() {
   function render(text_json) {
     let nest = function(json_chunk) {
       let rendered_chunk = document.createElement('span')
-      let text = json_chunk.text.replace(/\\n/gi, '<br>')
+      let text = json_chunk.text.replace(/\n/gi, '<br>')
       rendered_chunk.innerHTML = text
       rendered_chunk.classList.add(`formatting-${json_chunk.color}`)
       ;['obfuscated', 'bold', 'strikethrough', 'underline', 'italic'].forEach(x => {
@@ -90,15 +91,25 @@ function App() {
     text_json.forEach(nest, parent)
   }
 
+  function importJson() {
+    // TODO future
+  }
+
+  function exportJson() {
+    console.log(text_json)
+  }
+
   function update() {
     storage_save()
     let text_fcodes = document.querySelector('#input').value
-    let text_json = fcodesToJson(text_fcodes)
+    text_json = fcodesToJson(text_fcodes)
     render(text_json)
   }
 
   document.querySelector('#input').addEventListener('input', update)
   storage_load()
   update()
+  document.querySelector('#import-json').addEventListener('click', importJson)
+  document.querySelector('#export-json').addEventListener('click', exportJson)
 }
 window.addEventListener('load', App)
