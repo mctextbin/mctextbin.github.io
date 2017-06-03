@@ -25,6 +25,18 @@ function App() {
 
   let text_json = []
 
+  function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('hidden', '')
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+  }
+
   function storage_save() {
     localStorage.text = document.querySelector('#input').value
   }
@@ -97,6 +109,7 @@ function App() {
 
   function exportJson() {
     console.log(text_json)
+    download('mctextbin.json', JSON.stringify(text_json))
   }
 
   function update() {
