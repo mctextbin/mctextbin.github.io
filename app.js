@@ -79,6 +79,7 @@ function App() {
 
   function jsonToFcodes(text_json) {
     let text_fcodes = text_json
+    // TODO nest to flat
     return text_fcodes
   }
 
@@ -104,7 +105,7 @@ function App() {
   }
 
   function importJson() {
-    // TODO future
+    // TODO read file upload
   }
 
   function exportJson() {
