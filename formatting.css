@@ -1,0 +1,80 @@
+.f-black {
+  color: #000000;
+  text-shadow: 1px 1px 0 #000000;
+}
+.f-dark_blue {
+  color: #0000AA;
+  text-shadow: 1px 1px 0 #00002A;
+}
+.f-dark_green {
+  color: #00AA00;
+  text-shadow: 1px 1px 0 #002A00;
+}
+.f-dark_aqua {
+  color: #00AAAA;
+  text-shadow: 1px 1px 0 #002A2A;
+}
+.f-dark_red {
+  color: #AA0000;
+  text-shadow: 1px 1px 0 #2A0000;
+}
+.f-dark_purple {
+  color: #AA00AA;
+  text-shadow: 1px 1px 0 #2A002A;
+}
+.f-gold {
+  color: #FFAA00;
+  text-shadow: 1px 1px 0 #2A2A00;
+}
+.f-gray {
+  color: #AAAAAA;
+  text-shadow: 1px 1px 0 #2A2A2A;
+}
+.f-dark_gray {
+  color: #555555;
+  text-shadow: 1px 1px 0 #151515;
+}
+.f-blue {
+  color: #5555FF;
+  text-shadow: 1px 1px 0 #15153F;
+}
+.f-green {
+  color: #55FF55;
+  text-shadow: 1px 1px 0 #153F15;
+}
+.f-aqua {
+  color: #55FFFF;
+  text-shadow: 1px 1px 0 #153F3F;
+}
+.f-red {
+  color: #FF5555;
+  text-shadow: 1px 1px 0 #3F1515;
+}
+.f-light_purple {
+  color: #FF55FF;
+  text-shadow: 1px 1px 0 #3F153F;
+}
+.f-yellow {
+  color: #FFFF55;
+  text-shadow: 1px 1px 0 #3F3F15;
+}
+.f-white {
+  color: #FFFFFF;
+  text-shadow: 1px 1px 0 #3F3F3F;
+}
+.f-k {
+  color: transparent;
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.f-l {
+  font-weight: bold;
+}
+.f-m {
+  text-decoration: line-through;
+}
+.f-n {
+  text-decoration: underline;
+}
+.f-o {
+  font-style: italic;
+}
