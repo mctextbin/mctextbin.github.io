@@ -32,18 +32,18 @@ function App() {
       let code = x.charAt(1)
       let text = x.slice(2)
       if (/[0-9a-f]/i.test(code)) {
-        let json = {text: text}
-        json.color = FCODE_NAMES[code]
-        text_json.push(json)
+        let json_chunk = {text: text}
+        json_chunk.color = FCODE_NAMES[code]
+        text_json.push(json_chunk)
       }
       if (/[k-o]/i.test(code)) {
-        let json = {text: text}
-        json[FCODE_NAMES[code]] = true
+        let json_chunk = {text: text}
+        json_chunk[FCODE_NAMES[code]] = true
         let nest = function(x) {
           if (x.extra) {
             nest(x.extra[x.extra.length - 1])
           } else {
-            x.extra = [json]
+            x.extra = [json_chunk]
           }
         }
         nest(text_json[text_json.length - 1])
