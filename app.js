@@ -35,7 +35,7 @@ function App() {
   }
 
   function fcodesToJson(text_fcodes) {
-    text_fcodes = '&f' + text_fcodes
+    text_fcodes = `&f${text_fcodes}`
     text_fcodes = text_fcodes.replace(/[&§]r/gi, '&f')
     let text_split = text_fcodes.match(/([&§][0-9a-fk-o](?:(?![&§][0-9a-fk-o])[\s\S])*)/gi)
     let text_json = []
@@ -50,11 +50,11 @@ function App() {
       if (/[k-o]/i.test(code)) {
         let json_chunk = {text: text}
         json_chunk[FCODE_NAMES[code]] = true
-        let nest = function(x) {
-          if (x.extra) {
-            nest(x.extra[x.extra.length - 1])
+        let nest = function(text_chunk) {
+          if (text_chunk.extra) {
+            nest(text_chunk.extra[text_chunk.extra.length - 1])
           } else {
-            x.extra = [json_chunk]
+            text_chunk.extra = [json_chunk]
           }
         }
         nest(text_json[text_json.length - 1])
@@ -69,8 +69,23 @@ function App() {
   }
 
   function render(text_json) {
-    let text_rendered = JSON.stringify(text_json)
-    document.querySelector('#output').innerHTML = text_rendered
+    let nest = function(json_chunk) {
+      let rendered_chunk = document.createElement('span')
+      rendered_chunk.innerHTML = json_chunk.text
+      rendered_chunk.classList.add(`formatting-${json_chunk.color}`)
+      ;['obfuscated', 'bold', 'strikethrough', 'underline', 'italic'].forEach(x => {
+        if (json_chunk[x]) {
+          rendered_chunk.classList.add(`formatting-${x}`)
+        }
+      })
+      this.appendChild(rendered_chunk)
+      if (json_chunk.extra) {
+        json_chunk.extra.forEach(nest, rendered_chunk)
+      }
+    }
+    let parent = document.querySelector('#output')
+    parent.innerHTML = ''
+    text_json.forEach(nest, parent)
   }
 
   function update() {

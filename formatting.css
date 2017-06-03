@@ -1,80 +1,79 @@
-.f-black {
+.formatting-black {
   color: #000000;
   text-shadow: 1px 1px 0 #000000;
 }
-.f-dark_blue {
+.formatting-dark_blue {
   color: #0000AA;
   text-shadow: 1px 1px 0 #00002A;
 }
-.f-dark_green {
+.formatting-dark_green {
   color: #00AA00;
   text-shadow: 1px 1px 0 #002A00;
 }
-.f-dark_aqua {
+.formatting-dark_aqua {
   color: #00AAAA;
   text-shadow: 1px 1px 0 #002A2A;
 }
-.f-dark_red {
+.formatting-dark_red {
   color: #AA0000;
   text-shadow: 1px 1px 0 #2A0000;
 }
-.f-dark_purple {
+.formatting-dark_purple {
   color: #AA00AA;
   text-shadow: 1px 1px 0 #2A002A;
 }
-.f-gold {
+.formatting-gold {
   color: #FFAA00;
   text-shadow: 1px 1px 0 #2A2A00;
 }
-.f-gray {
+.formatting-gray {
   color: #AAAAAA;
   text-shadow: 1px 1px 0 #2A2A2A;
 }
-.f-dark_gray {
+.formatting-dark_gray {
   color: #555555;
   text-shadow: 1px 1px 0 #151515;
 }
-.f-blue {
+.formatting-blue {
   color: #5555FF;
   text-shadow: 1px 1px 0 #15153F;
 }
-.f-green {
+.formatting-green {
   color: #55FF55;
   text-shadow: 1px 1px 0 #153F15;
 }
-.f-aqua {
+.formatting-aqua {
   color: #55FFFF;
   text-shadow: 1px 1px 0 #153F3F;
 }
-.f-red {
+.formatting-red {
   color: #FF5555;
   text-shadow: 1px 1px 0 #3F1515;
 }
-.f-light_purple {
+.formatting-light_purple {
   color: #FF55FF;
   text-shadow: 1px 1px 0 #3F153F;
 }
-.f-yellow {
+.formatting-yellow {
   color: #FFFF55;
   text-shadow: 1px 1px 0 #3F3F15;
 }
-.f-white {
+.formatting-white {
   color: #FFFFFF;
   text-shadow: 1px 1px 0 #3F3F3F;
 }
-.f-k {
-  color: transparent;
-  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+.formatting-obfuscated {
+  background: black;
 }
-.f-l {
+.formatting-bold {
   font-weight: bold;
 }
-.f-m {
+.formatting-strikethrough {
   text-decoration: line-through;
 }
-.f-n {
+.formatting-underline {
   text-decoration: underline;
 }
-.f-o {
+.formatting-italic {
   font-style: italic;
 }
