@@ -39,8 +39,14 @@ function App() {
       if (/[k-o]/i.test(code)) {
         let json = {text: text}
         json[FCODE_NAMES[code]] = true
-        // TODO nesting
-        text_json.push(json)
+        let nest = function(x) {
+          if (x.extra) {
+            nest(x.extra[x.extra.length - 1])
+          } else {
+            x.extra = [json]
+          }
+        }
+        nest(text_json[text_json.length - 1])
       }
     })
     return text_json
