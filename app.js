@@ -1,10 +1,21 @@
 function App() {
   function fcodesToJson(text_fcodes) {
-    text_fcodes = "&f" + text_fcodes
-    let text_json = {}
-    let text_split = text_fcodes.match(/([&§][0-9a-fk-or](?:(?![&§][0-9a-fk-or])[\s\S])*)/gi)
-    return text_split
-    // return text_json
+    text_fcodes = '&f' + text_fcodes
+    text_fcodes = text_fcodes.replace(/[&§]r/gi, '&f')
+    let text_split = text_fcodes.match(/([&§][0-9a-fk-o](?:(?![&§][0-9a-fk-o])[\s\S])*)/gi)
+    let text_json = []
+    text_split.forEach(x => {
+      let code = x.charAt(1)
+      let text = x.slice(2)
+      if (/[0-9a-f]/i.test(code)) {
+        text_json.push({text: text})
+        // TODO color conversion
+      }
+      if (/[k-o]/i.test(code)) {
+        // TODO nesting
+      }
+    })
+    return text_json
   }
 
   function jsonToFcodes(text_json) {
