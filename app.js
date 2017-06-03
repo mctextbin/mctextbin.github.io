@@ -79,7 +79,9 @@ function App() {
   }
 
   function fcodesToJson(text_fcodes) {
-    text_fcodes = `&f${text_fcodes}`
+    if (!/^[&§][0-9a-f]/gi.test(text_fcodes)) {
+      text_fcodes = `&f${text_fcodes}`
+    }
     text_fcodes = text_fcodes.replace(/[&§]r/gi, '&f')
     let text_split = text_fcodes.match(/([&§][0-9a-fk-o](?:(?![&§][0-9a-fk-o])[\s\S])*)/gi)
     let text_json = []
