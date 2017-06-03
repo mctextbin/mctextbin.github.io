@@ -1,5 +1,5 @@
 function App() {
-  const FCODE_NAMES = {
+  const FCODES_TO_NAMES = {
     "0": "black",
     "1": "dark_blue",
     "2": "dark_green",
@@ -23,25 +23,55 @@ function App() {
     "o": "italic"
   }
 
-  let text_json = []
+  const NAMES_TO_FCODES = {
+    "black": "0",
+    "dark_blue": "1",
+    "dark_green": "2",
+    "dark_aqua": "3",
+    "dark_red": "4",
+    "dark_purple": "5",
+    "gold": "6",
+    "gray": "7",
+    "dark_gray": "8",
+    "blue": "9",
+    "green": "a",
+    "aqua": "b",
+    "red": "c",
+    "light_purple": "d",
+    "yellow": "e",
+    "white": "f",
+    "obfuscated": "k",
+    "bold": "l",
+    "strikethrough": "m",
+    "underline": "n",
+    "italic": "o"
+  }
 
-  function download(filename, text) {
+  let text_json_record = []
+
+  function downloadTextFile(filename, text) {
     var element = document.createElement('a');
     element.setAttribute('hidden', '')
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
     element.setAttribute('download', filename);
     document.body.appendChild(element);
-
     element.click();
-
     document.body.removeChild(element);
   }
 
-  function storage_save() {
+  function readTextFile(path, callback) {
+    let reader = new FileReader()
+    reader.addEventListener('load', event => {
+      callback(event.target.result)
+    })
+    reader.readAsText(path.files[0])
+  }
+
+  function storageSave() {
     localStorage.text = document.querySelector('#input').value
   }
 
-  function storage_load() {
+  function storageLoad() {
     if (localStorage.text === undefined) {
       localStorage.text = ''
     }
@@ -58,12 +88,12 @@ function App() {
       let text = x.slice(2)
       if (/[0-9a-f]/i.test(code)) {
         let json_chunk = {text: text}
-        json_chunk.color = FCODE_NAMES[code]
+        json_chunk.color = FCODES_TO_NAMES[code]
         text_json.push(json_chunk)
       }
       if (/[k-o]/i.test(code)) {
         let json_chunk = {text: text}
-        json_chunk[FCODE_NAMES[code]] = true
+        json_chunk[FCODES_TO_NAMES[code]] = true
         let nest = function(text_chunk) {
           if (text_chunk.extra) {
             nest(text_chunk.extra[text_chunk.extra.length - 1])
@@ -78,8 +108,21 @@ function App() {
   }
 
   function jsonToFcodes(text_json) {
-    let text_fcodes = text_json
-    // TODO nest to flat
+    let text_fcodes = ''
+    let nest = function(json_chunk) {
+      let text = json_chunk.text
+      ;['obfuscated', 'bold', 'strikethrough', 'underline', 'italic'].forEach(x => {
+        if (json_chunk[x]) {
+          text = `&${NAMES_TO_FCODES[x]}${text}`
+        }
+      })
+      text = `&${NAMES_TO_FCODES[json_chunk.color]}${text}`
+      text_fcodes = `${text_fcodes}${text}`
+      if (json_chunk.extra) {
+        json_chunk.extra.forEach(nest)
+      }
+    }
+    text_json.forEach(nest)
     return text_fcodes
   }
 
@@ -104,26 +147,30 @@ function App() {
     text_json.forEach(nest, parent)
   }
 
-  function importJson() {
-    // TODO read file upload
+  function importJson(event) {
+    readTextFile(event.target, file_text => {
+      let text_json = JSON.parse(file_text)
+      let text_fcodes = jsonToFcodes(text_json)
+      document.querySelector('#input').value = text_fcodes
+      update()
+    })
   }
 
   function exportJson() {
-    console.log(text_json)
-    download('mctextbin.json', JSON.stringify(text_json))
+    downloadTextFile('mctextbin.json', JSON.stringify(text_json_record))
   }
 
   function update() {
-    storage_save()
+    storageSave()
     let text_fcodes = document.querySelector('#input').value
-    text_json = fcodesToJson(text_fcodes)
-    render(text_json)
+    text_json_record = fcodesToJson(text_fcodes)
+    render(text_json_record)
   }
 
   document.querySelector('#input').addEventListener('input', update)
-  storage_load()
+  storageLoad()
   update()
-  document.querySelector('#import-json').addEventListener('click', importJson)
+  document.querySelector('#import-json').addEventListener('change', importJson)
   document.querySelector('#export-json').addEventListener('click', exportJson)
 }
 window.addEventListener('load', App)

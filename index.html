@@ -39,19 +39,22 @@
         <span class="formatting-strikethrough">m</span>
         <span class="formatting-underline">n</span>
         <span class="formatting-italic">o</span>
+        &nbsp;
         <button><a href="http://minecraft.gamepedia.com/Formatting_codes">formatting codes reference</a></button>
       </div>
-      <textarea class="input-main" id="input" autofocus placeholder="type text with formatting codes here"></textarea>
+      <textarea id="input" class="input-main" autofocus placeholder="type text with formatting codes here"></textarea>
     </div>
     <div class="output-container">
       <div class="output-nav">
-        <button id="import-json" hidden>import JSON</button>
+        <button><label for="import-json">import JSON</label></button>
+        <input id="import-json" type="file" accept="application/json" style="visibility: hidden;">
         <button id="export-json">export JSON</button>
+        &nbsp;
         <button><a href="http://minecraft.gamepedia.com/Commands#Raw_JSON_text">JSON reference</a></button>
         &nbsp;
         <button><a href="https://github.com/mctextbin/mctextbin.github.io">about mctextbin</a></button>
       </div>
-      <div class="output-main" id="output"></div>
+      <div id="output" class="output-main"></div>
     </div>
   </div>
 
