@@ -32,13 +32,15 @@ function App() {
       let code = x.charAt(1)
       let text = x.slice(2)
       if (/[0-9a-f]/i.test(code)) {
-        text_json.push({
-          text: text,
-          color: CODES_TO_NAMES[code]
-        })
+        let json = {text: text}
+        json.color = CODES_TO_NAMES[code]
+        text_json.push(json)
       }
       if (/[k-o]/i.test(code)) {
+        let json = {text: text}
+        json[CODES_TO_NAMES[code]] = true
         // TODO nesting
+        text_json.push(json)
       }
     })
     return text_json
