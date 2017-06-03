@@ -37,6 +37,7 @@ function App() {
   function fcodesToJson(text_fcodes) {
     text_fcodes = `&f${text_fcodes}`
     text_fcodes = text_fcodes.replace(/[&§]r/gi, '&f')
+    text_fcodes = text_fcodes.replace(/\n/gi, '\\n')
     let text_split = text_fcodes.match(/([&§][0-9a-fk-o](?:(?![&§][0-9a-fk-o])[\s\S])*)/gi)
     let text_json = []
     text_split.forEach(x => {
@@ -71,7 +72,8 @@ function App() {
   function render(text_json) {
     let nest = function(json_chunk) {
       let rendered_chunk = document.createElement('span')
-      rendered_chunk.innerHTML = json_chunk.text
+      let text = json_chunk.text.replace(/\\n/gi, '<br>')
+      rendered_chunk.innerHTML = text
       rendered_chunk.classList.add(`formatting-${json_chunk.color}`)
       ;['obfuscated', 'bold', 'strikethrough', 'underline', 'italic'].forEach(x => {
         if (json_chunk[x]) {
