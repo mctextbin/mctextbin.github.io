@@ -1,5 +1,5 @@
 function App() {
-  const CODES_TO_NAMES = {
+  const FCODE_NAMES = {
     "0": "black",
     "1": "dark_blue",
     "2": "dark_green",
@@ -33,12 +33,12 @@ function App() {
       let text = x.slice(2)
       if (/[0-9a-f]/i.test(code)) {
         let json = {text: text}
-        json.color = CODES_TO_NAMES[code]
+        json.color = FCODE_NAMES[code]
         text_json.push(json)
       }
       if (/[k-o]/i.test(code)) {
         let json = {text: text}
-        json[CODES_TO_NAMES[code]] = true
+        json[FCODE_NAMES[code]] = true
         // TODO nesting
         text_json.push(json)
       }
