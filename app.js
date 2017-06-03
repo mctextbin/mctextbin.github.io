@@ -32,8 +32,10 @@ function App() {
       let code = x.charAt(1)
       let text = x.slice(2)
       if (/[0-9a-f]/i.test(code)) {
-        text_json.push({text: text})
-        // TODO color conversion
+        text_json.push({
+          text: text,
+          color: CODES_TO_NAMES[code]
+        })
       }
       if (/[k-o]/i.test(code)) {
         // TODO nesting
