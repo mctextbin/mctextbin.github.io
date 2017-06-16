@@ -133,7 +133,7 @@ function App() {
     text = text.replace(`&`, `&amp;`)
     text = text.replace(`<`, `&lt;`)
     text = text.replace(`>`, `&gt;`)
-    text = text.replace(` `, `&nbsp;`)
+    text = text.replace(/ /g, `&nbsp;`)
     text = text.replace(/\n/gi, '<br>')
     return text
   }
