@@ -133,16 +133,15 @@ function App() {
     text = text.replace(`&`, `&amp;`)
     text = text.replace(`<`, `&lt;`)
     text = text.replace(`>`, `&gt;`)
+    text = text.replace(` `, `&nbsp;`)
+    text = text.replace(/\n/gi, '<br>')
     return text
   }
 
   function render(text_json) {
     let nest = function(json_chunk) {
       let rendered_chunk = document.createElement('span')
-      let text = json_chunk.text
-      text = escape(text)
-      text = text.replace(/\n/gi, '<br>')
-      rendered_chunk.innerHTML = text
+      rendered_chunk.innerHTML = escape(json_chunk.text)
       rendered_chunk.classList.add(`formatting-${json_chunk.color}`)
       ;['obfuscated', 'bold', 'strikethrough', 'underline', 'italic'].forEach(x => {
         if (json_chunk[x]) {
