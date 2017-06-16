@@ -130,7 +130,6 @@ function App() {
 
   function escape(text) {
     text = text.replace(`"`, `&quot;`)
-    text = text.replace(`'`, `&#39;`)
     text = text.replace(`&`, `&amp;`)
     text = text.replace(`<`, `&lt;`)
     text = text.replace(`>`, `&gt;`)
